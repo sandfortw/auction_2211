@@ -35,4 +35,27 @@ describe Auction do
       expect(auction.item_names).to eq(["Chalkware Piggy Bank", "Bamboo Picture Frame"])
     end
   end
+
+  describe '#unpopular items' do
+    let(:item1) {Item.new('Chalkware Piggy Bank')}
+    let(:item2) {Item.new('Bamboo Picture Frame')}
+    let(:item3) {Item.new('Homemade Chocolate Chip Cookies')}
+    let(:item4) {Item.new('2 Days Dogsitting')}
+    let(:item5) {Item.new('Forever Stamps')}
+    let(:attendee2) {Attendee.new(name: 'Bob', budget: '$75')}
+    let(:attendee3) {Attendee.new(name: 'Mike', budget: '$100')}
+    let(:auction) {Auction.new}
+
+    it 'returns unpopular items' do
+      auction.add_item(item1)
+      auction.add_item(item2)
+      auction.add_item(item3)
+      auction.add_item(item4)
+      auction.add_item(item5)
+      item1.add_bid(attendee2, 20)
+      item1.add_bid(attendee1, 22)
+      item4.add_bid(attendee3, 50)
+      expect(auction.unpopular_items).to eq([item2, item4])
+    end
+  end
 end
