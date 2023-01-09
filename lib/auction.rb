@@ -1,6 +1,6 @@
 class Auction
 require 'date'
-  attr_reader :items, :date
+  attr_reader :items
 
   def initialize
     @items = []
@@ -52,6 +52,11 @@ require 'date'
       end
     end
     info
+  end
+
+  def date
+    split = @date.to_s.split("-")
+    "#{split[1]}/#{split[2]}/#{split[0]}"
   end
 
 end
