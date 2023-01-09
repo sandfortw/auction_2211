@@ -6,7 +6,7 @@ describe Auction do
 
   describe 'initialization' do
     it 'exists' do
-      expect(auction.items).to be_an(Item)
+      expect(auction).to be_an(Auction)
     end
   end
 
