@@ -5,6 +5,7 @@ require 'date'
   def initialize
     @items = []
     @date = Date.today
+    @closed = false
   end
 
   def add_item(item)
@@ -56,7 +57,20 @@ require 'date'
 
   def date
     split = @date.to_s.split("-")
-    "#{split[1]}/#{split[2]}/#{split[0]}"
+    "#{split[2]}/#{split[1]}/#{split[0]}"
+  end
+
+  def close_auction
+    @closed = true
+    sales = {}
+    @items.each do |item|
+      if item.bids == {}
+        sales[item] = 'Not Sold'
+      else
+      sales[item] = item.bids.sort_by {|k,v| v}.last.first
+      end
+    end
+    sales
   end
 
 end

@@ -89,7 +89,9 @@ describe Auction do
     end
 
     it 'can close' do
-      expect(auction.close_auction).to eq({item1 => attendee1, item4 => attendee3})
+      expect(auction.close_auction).to eq({item1 => attendee1, item2 => 'Not Sold', 
+                                           item3 => 'Not Sold', item4 => attendee3, 
+                                           item5 => 'Not Sold'})
     end
   end
 end
