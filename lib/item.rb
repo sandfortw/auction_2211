@@ -11,7 +11,11 @@ class Item
   end
 
   def current_high_bid
-    @bids.sort_by { |k,v| v}.last[1]
+    if @bids != {}
+      @bids.sort_by { |k,v| v}.last[1]
+    else
+      0
+    end
   end
 
 end
