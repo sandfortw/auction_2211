@@ -4,10 +4,11 @@ class Item
   def initialize(name)
     @bids = {}
     @name = name
+    @closed = false
   end
     
   def add_bid(attendee, bid)
-    @bids[attendee] = bid
+    @closed ? nil : @bids[attendee] = bid
   end
 
   def current_high_bid
@@ -18,4 +19,7 @@ class Item
     end
   end
 
+  def close_bidding
+    @closed = true
+  end
 end
