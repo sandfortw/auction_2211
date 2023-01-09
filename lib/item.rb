@@ -1,5 +1,5 @@
 class Item
-  attr_reader :name
+  attr_reader :name, :bids
 
   def initialize(name)
     @bids = {}
@@ -10,5 +10,8 @@ class Item
     @bids[attendee] = bid
   end
 
+  def current_high_bid
+    @bids.sort_by { |k,v| v}.last[1]
+  end
 
 end
