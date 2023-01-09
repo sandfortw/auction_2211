@@ -9,7 +9,7 @@ require 'date'
   end
 
   def add_item(item)
-    @items << item
+    @closed ? nil : @items << item
   end
 
   def item_names
