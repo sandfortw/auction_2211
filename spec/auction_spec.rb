@@ -72,13 +72,14 @@ describe Auction do
     end
 
     it 'has bidders' do
-      expect(auction.bidders).to eq[attendee2, attendee1, attendee3]
+      expect(auction.bidders).to eq([attendee2, attendee1, attendee3])
     end
 
     it 'has bidder info' do
-      expect(bidder_info).to eq({attendee2 => {:budget => 75, :items => item1}, 
-                                 attendee1 => {:budget => 50, :items => item1},
-                                 attendee3 => {:budget => 100, :items => item4}})
+      expect(auction.bidder_info).to eq({attendee2 => {:budget => 75, :items => [item1]}, 
+                                 attendee1 => {:budget => 50, :items => [item1]},
+                                 attendee3 => {:budget => 100, :items => [item4]}})
     end
+
   end
 end

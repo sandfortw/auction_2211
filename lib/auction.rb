@@ -30,4 +30,26 @@ class Auction
     end
       revenue
   end
+
+  def bidders
+    bidders = []
+    @items.each do |item|
+      item.bids.keys.each do |attendee|
+        bidders << attendee 
+      end
+    end
+    bidders
+  end
+  
+  def bidder_info
+    info = Hash.new{|h,k| h[k] = {}}
+    bidders.each do |bidder|
+      info[bidder] = {budget: bidder.budget.to_i, items: []}
+      @items.each do |item|
+        info[bidder][:items] << item if item.bids.keys.include?(bidder)
+      end
+    end
+    info
+  end
+
 end
