@@ -36,7 +36,7 @@ describe Auction do
     end
   end
 
-  describe '#unpopular items' do
+  describe '#unpopular_items and #potential_revenue' do
     let(:item1) {Item.new('Chalkware Piggy Bank')}
     let(:item2) {Item.new('Bamboo Picture Frame')}
     let(:item3) {Item.new('Homemade Chocolate Chip Cookies')}
@@ -56,6 +56,18 @@ describe Auction do
       item1.add_bid(attendee1, 22)
       item4.add_bid(attendee3, 50)
       expect(auction.unpopular_items).to eq([item2, item4])
+    end
+
+    it 'returns potential revenue' do
+      auction.add_item(item1)
+      auction.add_item(item2)
+      auction.add_item(item3)
+      auction.add_item(item4)
+      auction.add_item(item5)
+      item1.add_bid(attendee2, 20)
+      item1.add_bid(attendee1, 22)
+      item4.add_bid(attendee3, 50)
+      expect(auction.potential_revenue).to eq(87)
     end
   end
 end
