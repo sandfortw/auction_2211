@@ -81,5 +81,11 @@ describe Auction do
                                  attendee3 => {:budget => 100, :items => [item4]}})
     end
 
+    it 'has a date' do
+      require 'date'
+      date = Date.today
+      expect(auction.date).to eq(date)
+    end
+
   end
 end
