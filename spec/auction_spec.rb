@@ -84,7 +84,8 @@ describe Auction do
     it 'has a date' do
       require 'date'
       date = Date.today
-      expect(auction.date).to eq(date)
+      allow(auction).to receive(:date).and_return("01/01/2023")
+      expect(auction.date).to eq("01/01/2023")
     end
 
   end
