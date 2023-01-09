@@ -88,5 +88,8 @@ describe Auction do
       expect(auction.date).to eq("01/01/2023")
     end
 
+    it 'can close' do
+      expect(auction.close_auction).to eq({item1 => attendee1, item4 => attendee3})
+    end
   end
 end
